@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      RESTAURANTE
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ios list-ios hydrated">
+    <ion-list-header class="ios hydrated">
+      LISTA DE PRODUCTOS
+    </ion-list-header>
+
+    <ion-item *ngFor="let producto of Producto" class="item-label item ios in-list ion-focusable hydrated">
+      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+        <h2>{{producto.imagen}}</h2>
+        <h3>{{producto.nombre}}</h3>
+        <h2>{{producto.precio}}</h2>
+        <h3>{{producto.receta}}</h3>
+      </ion-label>
+
+      <div class="item-note" item-end>
+        <ion-fab-button size="small" color="success" [routerLink]="['/editar-producto/', producto._id]">
+          <ion-icon color="light" name="hammer" ></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button size="small" color="danger" (click)="deleteProducto(producto, i)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-fab-button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+
+  <!-- fab placed to the bottom start -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/crear-producto">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
